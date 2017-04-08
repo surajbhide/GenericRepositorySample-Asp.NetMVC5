@@ -1,7 +1,37 @@
-﻿
+﻿@model IEnumerable<EF.Core.Data.Book>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "List of Books";
 }
 
-<h2>Index</h2>
+<br />
+<div class="panel panel-primary book-example">
+    <div class="panel-heading">Book Listing</div>
+    <div class="panel-body">
+        <a href="@Url.Action("CreateEditBook")" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus"></span>
+        Book
+        </a>
+    </div>
 
+    <table class="table table-striped">
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Title)</th>
+            <th>@Html.DisplayNameFor(m => m.Author)</th>
+            <th>@Html.DisplayNameFor(m => m.ISBN)</th>
+            <th></th>
+        </tr>
+        @foreach (var b in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(item => b.Title)</td>
+                <td>@Html.DisplayFor(item => b.Author)</td>
+                <td>@Html.DisplayFor(item => b.ISBN)</td>
+                <td>
+                    @Html.ActionLink("Edit", "CreateEditBook", new { Id = b.ID }, new { @class = "btn btn-success"}) |
+                    @Html.ActionLink("Details", "DetailBook", new { Id = b.ID }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Delete", "DeleteBook", new { Id = b.ID }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
