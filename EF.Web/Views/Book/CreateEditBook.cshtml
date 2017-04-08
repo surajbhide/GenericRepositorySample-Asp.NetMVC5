@@ -1,0 +1,52 @@
+﻿@model EF.Core.Data.Book
+
+@{
+    ViewBag.Title = "Create Edit Book";
+}
+
+<br />
+<div class="book-example panel panel-primary">
+    <div class="panel-heading panel-head">Add/Edit Book</div>
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Title, new { @class = "col-lg-2 control-label" })
+                    <div class="col-lg-9">
+                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ISBN, new { @class = "col-lg-2 control-label" })
+                    <div class="col-lg-9">
+                        @Html.TextBoxFor(m => m.ISBN, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Author, new { @class = "col-lg-2 control-label" })
+                    <div class="col-lg-9">
+                        @Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DatePublished, new { @class = "col-lg-2 control-label" })
+                    <div class="col-lg-9">
+                        @Html.TextBoxFor(m => m.DatePublished, new { @class = "form-control datepicker" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-5">
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default"})
+                        <button class="btn btn-success" id="btnSubmit" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

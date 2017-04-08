@@ -11,7 +11,7 @@ namespace EF.Data
 {
     public class EFDbContext : DbContext
     {
-        public EFDbContext() : base("name=DbConnectionString")
+        public EFDbContext() : base()
         {
         }
 
