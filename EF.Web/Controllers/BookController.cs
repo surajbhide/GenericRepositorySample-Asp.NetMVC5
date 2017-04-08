@@ -62,5 +62,16 @@ namespace EF.Web.Controllers
             Book model = bookRepository.GetById(id);
             return View(model);
         }
+
+        [HttpPost, ActionName("DeleteBook")]
+        public ActionResult DeleteBookConfirmed(int id)
+        {
+            var book = bookRepository.GetById(id);
+            bookRepository.Delete(book);
+            _unitOfWork.Complete();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DetailBook(int id) => View(bookRepository.GetById(id));
     }
 }
